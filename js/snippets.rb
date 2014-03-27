@@ -150,6 +150,12 @@ with_defaults :scope => "source.js" do
     s.needApplyReContentAssist = true
   end
   
+  snippet '$("")' do |s|
+    s.trigger = "dl"
+    s.expansion = "$$(\"$0\")"
+    s.needApplyReContentAssist = true
+  end
+  
   snippet "document.getElementById" do |s|
     s.trigger = "dgi"
     s.expansion = "document.getElementById(\"$1\")"
