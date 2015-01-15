@@ -131,7 +131,7 @@ end
 
 snippet 'iframe' do |s|
   s.trigger = 'iframe'
-  s.expansion = '<iframe src="$1" width="$2" height="$3"></canvas>'
+  s.expansion = '<iframe src="$1" width="$2" height="$3"></iframe>'
   s.needApplyReContentAssist = true
 end
 
