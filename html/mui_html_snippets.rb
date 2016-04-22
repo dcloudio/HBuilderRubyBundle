@@ -167,12 +167,13 @@ snippet 'mIcon(图标)' do |cmd|
 end 
 snippet 'mOffcanvas(侧滑导航-主界面、菜单同时移动)' do |cmd|
     cmd.trigger = 'moffcanvasall'
-    cmd.expansion = "<!-- 侧滑导航根容器 -->
+    cmd.expansion = "<!-- 主界面菜单同时移动 -->
+<!-- 侧滑导航根容器 -->
 <div class=\"mui-off-canvas-wrap mui-draggable\">
     <!-- 主页面容器 -->
     <div class=\"mui-inner-wrap\">
         <!-- 菜单容器 -->
-        <aside class=\"mui-off-canvas-left\">
+        <aside class=\"mui-off-canvas-left\" id=\"offCanvasSide\">
             <div class=\"mui-scroll-wrapper\">
                 <div class=\"mui-scroll\">
                     <!-- 菜单具体展示内容 -->
@@ -182,7 +183,7 @@ snippet 'mOffcanvas(侧滑导航-主界面、菜单同时移动)' do |cmd|
         </aside>
         <!-- 主页面标题 -->
         <header class=\"mui-bar mui-bar-nav\">
-            <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\"></a>
+            <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\" href=\"#offCanvasSide\"></a>
             <h1 class=\"mui-title\">标题</h1>
         </header>
         <!-- 主页面内容容器 -->
@@ -197,11 +198,42 @@ snippet 'mOffcanvas(侧滑导航-主界面、菜单同时移动)' do |cmd|
 $0"
 end 
 snippet 'mOffcanvas(侧滑导航-主界面移动、菜单不动)' do |cmd|
-    cmd.trigger = 'moffcanvasallmain'
-    cmd.expansion = "<!-- 侧滑导航根容器 -->
+    cmd.trigger = 'moffcanvasmain'
+    cmd.expansion = "<!-- 主界面移动、菜单不动 -->
 <div class=\"mui-off-canvas-wrap mui-draggable\">
   <!-- 菜单容器 -->
-  <aside class=\"mui-off-canvas-left\">
+  <aside class=\"mui-off-canvas-left\" id=\"offCanvasSide\">
+    <div class=\"mui-scroll-wrapper\">
+      <div class=\"mui-scroll\">
+        <!-- 菜单具体展示内容 -->
+        	$1
+      </div>
+    </div>
+  </aside>
+  <!-- 主页面容器 -->
+  <div class=\"mui-inner-wrap\">
+    <!-- 主页面标题 -->
+    <header class=\"mui-bar mui-bar-nav\">
+      <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\"  href=\"#offCanvasSide\" ></a>
+      <h1 class=\"mui-title\">标题</h1>
+    </header>
+    <div class=\"mui-content mui-scroll-wrapper\">
+      <div class=\"mui-scroll\">
+        <!-- 主界面具体展示内容 -->
+         	$2
+      </div>
+    </div> 
+    <div class=\"mui-off-canvas-backdrop\"></div>
+  </div> 
+</div>$0"
+end 
+snippet 'mOffcanvas(侧滑导航-主界面不动、菜单移动)' do |cmd|
+    cmd.trigger = 'moffcanvasmenu'
+    cmd.expansion = "<!-- 主界面不动、菜单移动 -->
+<!-- 侧滑导航根容器 -->
+<div class=\"mui-off-canvas-wrap mui-draggable mui-slide-in\">
+  <!-- 菜单容器 -->
+  <aside class=\"mui-off-canvas-left\" id=\"offCanvasSide\">
     <div class=\"mui-scroll-wrapper\">
       <div class=\"mui-scroll\">
         <!-- 菜单具体展示内容 -->
@@ -213,7 +245,7 @@ snippet 'mOffcanvas(侧滑导航-主界面移动、菜单不动)' do |cmd|
   <div class=\"mui-inner-wrap\">
     <!-- 主页面标题 -->
     <header class=\"mui-bar mui-bar-nav\">
-      <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\"></a>
+      <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\" href=\"#offCanvasSide\"></a>
       <h1 class=\"mui-title\">标题</h1>
     </header>
     <div class=\"mui-content mui-scroll-wrapper\">
@@ -222,15 +254,17 @@ snippet 'mOffcanvas(侧滑导航-主界面移动、菜单不动)' do |cmd|
         $2
       </div>
     </div>  
+    <div class=\"mui-off-canvas-backdrop\"></div>
   </div>
 </div>"
 end 
-snippet 'mOffcanvas(侧滑导航-主界面不动、菜单移动)' do |cmd|
-    cmd.trigger = 'moffcanvasallmenu'
-    cmd.expansion = "<!-- 侧滑导航根容器 -->
-<div class=\"mui-off-canvas-wrap mui-draggable mui-slide-in\">
+snippet 'mOffcanvas(缩放式侧滑(类手机QQ))' do |cmd|
+    cmd.trigger = 'moffcanvasscalable'
+    cmd.expansion = "<!-- 缩放式侧滑（类手机QQ） -->
+<!-- 侧滑导航根容器 -->
+<div class=\"mui-off-canvas-wrap mui-draggable mui-scalable\">
   <!-- 菜单容器 -->
-  <aside class=\"mui-off-canvas-left\">
+  <aside class=\"mui-off-canvas-left mui-transitioning\" id=\"offCanvasSide\">
     <div class=\"mui-scroll-wrapper\">
       <div class=\"mui-scroll\">
         <!-- 菜单具体展示内容 -->
@@ -239,10 +273,10 @@ snippet 'mOffcanvas(侧滑导航-主界面不动、菜单移动)' do |cmd|
     </div>
   </aside>
   <!-- 主页面容器 -->
-  <div class=\"mui-inner-wrap\">
+  <div class=\"mui-inner-wrap mui-transitioning\">
     <!-- 主页面标题 -->
     <header class=\"mui-bar mui-bar-nav\">
-      <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\"></a>
+      <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\" href=\"#offCanvasSide\"></a>
       <h1 class=\"mui-title\">标题</h1>
     </header>
     <div class=\"mui-content mui-scroll-wrapper\">
@@ -251,8 +285,9 @@ snippet 'mOffcanvas(侧滑导航-主界面不动、菜单移动)' do |cmd|
         $2
       </div>
     </div>  
+    <div class=\"mui-off-canvas-backdrop\"></div>
   </div>
-</div>"
+</div>$0"
 end 
 snippet 'mText(文本框)' do |cmd|
     cmd.trigger = 'minputtext'
@@ -396,7 +431,7 @@ snippet 'mSwitch(开关)' do |cmd|
 end
   
 snippet 'mSwitch(开关 - 蓝色)' do |cmd|
-    cmd.trigger = 'mswitch_blue'
+    cmd.trigger = 'mswitchblue'
     cmd.expansion = "<div class=\"mui-input-row\">
     <label>${2:Switch}</label>
     <div class=\"mui-switch${1: mui-active} mui-switch-blue\">
@@ -413,7 +448,7 @@ snippet 'mSwitch(开关Mini)' do |cmd|
 end
   
 snippet 'mSwitch(开关Mini - blue)' do |cmd|
-    cmd.trigger = 'mswitchmini_blue'
+    cmd.trigger = 'mswitchminiblue'
     cmd.expansion = "<div class=\"mui-switch mui-switch-mini${1: mui-active} mui-switch-blue\">
   <div class=\"mui-switch-handle\"></div>
 </div>"
@@ -424,7 +459,7 @@ snippet 'mbadge（数字角标）' do |cmd|
     cmd.expansion = "<span class=\"mui-badge ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey}\">${2:1}</span>$0"
 end
 snippet 'mbadge（数字角标无底色）' do |cmd|
-    cmd.trigger = 'mbadge_inverted'
+    cmd.trigger = 'mbadgeinverted'
     cmd.expansion = "<span class=\"mui-badge mui-badge-inverted ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey}\">${2:1}</span>$0"
 end
   
@@ -592,50 +627,48 @@ end
 
 snippet 'mGrid(九宫格)' do |cmd|
     cmd.trigger = 'mgrid'
-    cmd.expansion = "<div class=\"mui-card\">
-    <ul class=\"mui-table-view mui-grid-view mui-grid-9\">
-        <li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
-            <a href=\"#\">
-                <span class=\"mui-icon mui-icon-home\"></span>
-                <div class=\"mui-media-body\">${1:Home}</div>
-            </a>
-        </li>
-        <li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
-            <a href=\"#\">
-                <span class=\"mui-icon mui-icon-email\"><span class=\"mui-badge mui-badge-red\">5</span></span>
-                <div class=\"mui-media-body\">${2:Email}</div>
-            </a>
-        </li>
-        <li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
-            <a href=\"#\">
-                <span class=\"mui-icon mui-icon-chatbubble\"></span>
-                <div class=\"mui-media-body\">${3:Chat}</div>
-            </a>
-        </li>
-        <li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
-            <a href=\"#\">
-                <span class=\"mui-icon mui-icon-location\"></span>
-                <div class=\"mui-media-body\">${4:Location}</div>
-            </a>
-        </li>
-        <li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
-            <a href=\"#\">
-                <span class=\"mui-icon mui-icon-search\"></span>
-                <div class=\"mui-media-body\">${5:Search}</div>
-            </a>
-        </li>
-        <li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
-            <a href=\"#\">
-                <span class=\"mui-icon mui-icon-phone\"></span>
-                <div class=\"mui-media-body\">${6:Phone}</div>
-            </a>
-        </li>
+    cmd.expansion = "<ul class=\"mui-table-view mui-grid-view mui-grid-9\">
+<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
+    <a href=\"#\">
+        <span class=\"mui-icon mui-icon-home\"></span>
+        <div class=\"mui-media-body\">${1:Home}</div>
+    </a>
+</li>
+<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
+    <a href=\"#\">
+        <span class=\"mui-icon mui-icon-email\"><span class=\"mui-badge mui-badge-red\">5</span></span>
+        <div class=\"mui-media-body\">${2:Email}</div>
+    </a>
+</li>
+<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
+    <a href=\"#\">
+        <span class=\"mui-icon mui-icon-chatbubble\"></span>
+        <div class=\"mui-media-body\">${3:Chat}</div>
+    </a>
+</li>
+<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
+    <a href=\"#\">
+        <span class=\"mui-icon mui-icon-location\"></span>
+        <div class=\"mui-media-body\">${4:Location}</div>
+    </a>
+</li>
+<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
+    <a href=\"#\">
+        <span class=\"mui-icon mui-icon-search\"></span>
+        <div class=\"mui-media-body\">${5:Search}</div>
+    </a>
+</li>
+<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">
+    <a href=\"#\">
+        <span class=\"mui-icon mui-icon-phone\"></span>
+        <div class=\"mui-media-body\">${6:Phone}</div>
+    </a>
+</li>
     </ul>
-</div>$0"
+$0"
 end
   
 snippet 'mGallery-Table(图文表格)' do |cmd|
-    cmd.needApplyReContentAssist = true 
     cmd.trigger = 'mslider_gallery_table'
     cmd.expansion = "<ul class=\"mui-table-view mui-grid-view\">
     <li class=\"mui-table-view-cell mui-media mui-col-xs-6\">
@@ -654,19 +687,18 @@ snippet 'mGallery-Table(图文表格)' do |cmd|
 end
   
 snippet 'mGallery图片轮播' do |cmd|
-    cmd.needApplyReContentAssist = true 
     cmd.trigger = 'mslider_gallery'
     cmd.expansion = "<div class=\"mui-slider\">
     <div class=\"mui-slider-group\">
         <div class=\"mui-slider-item\">
             <a href=\"#\">
-                <img src=\"$1\">
+                <img src=\"http://placehold.it/400x300\">
                 <p class=\"mui-slider-title\">${3:文字说明1}</p>
             </a>
         </div>
         <div class=\"mui-slider-item\">
             <a href=\"#\">
-                <img src=\"$2\">
+                <img src=\"http://placehold.it/400x300\">
                 <p class=\"mui-slider-title\">${4:文字说明2}</p>
             </a>
         </div>

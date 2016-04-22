@@ -95,6 +95,11 @@ with_defaults :scope => "source.js" do #=====扩展定义JS代码块============
   s.trigger = "mmui"
   s.needApplyReContentAssist = true
   s.expansion = "mui('$1')"
+  end
+  snippet "mui" do |s|
+  s.trigger = "mui"
+  s.needApplyReContentAssist = true
+  s.expansion = "mui."
   end 
   snippet "mui.each()" do |s|
   s.trigger = "meach"
@@ -123,6 +128,36 @@ with_defaults :scope => "source.js" do #=====扩展定义JS代码块============
   s.expansion = "mui.scrollTo(${1:ypos},${2:duration},${3:/function () {
     	
 }}$0"
+  end 
+  snippet "mui.alert()" do |s|
+  s.trigger = "mdalert"
+  s.expansion = "mui.alert('${1:message}','${2:title}','${3:btnValue}',function \(${4:e}\) \{
+   ${4:e}.index$0
+\}${5:,'div'})"
+  end 
+  snippet "mui.confirm()" do |s|
+  s.trigger = "mdconfirm"
+  s.expansion = "mui.confirm('${1:message}','${2:title}',['${3:取消}','${4:确认}'],function (${5:e}) {
+	${5:e}.index$0
+}${6:,'div'})"
+  end 
+  snippet "mui.prompt()" do |s|
+  s.trigger = "mdprompt"
+  s.expansion = " mui.prompt('${1:text}','${2:defaultText}','${3:title}',['${4:取消}','${5:确认}'],function (${6:e}) {
+    ${6:e}.index$0
+}${7:,'div'})"
+  end 
+  snippet "mui.toast()" do |s|
+  s.trigger = "mdtoast"
+  s.expansion = "mui.toast('${1:message}')$0"
+  end 
+  snippet "mui.closePopup()" do |s|
+  s.trigger = "mdclosePopup"
+  s.expansion = "mui.closePopup()$0"
+  end 
+  snippet "mui.closePopups()" do |s|
+  s.trigger = "mdclosePopups"
+  s.expansion = "mui.closePopups()$0"
   end 
   snippet "mui.ajax()" do |s|
   s.trigger = "majax"
